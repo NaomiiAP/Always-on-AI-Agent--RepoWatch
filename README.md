@@ -13,36 +13,36 @@ on a 10-minute EventBridge schedule.
 
 | # | What it shows | File |
 | - | ------------- | ---- |
-| 1 | New issue created by the repo owner (NaomiiAP) | `screenshots/01-issue-created.png` |
-| 2 | REPOWATCH posts an AI triage comment as the bot account (just-googleit) | `screenshots/02-auto-triage-comment.png` |
-| 3 | Severity and area labels applied automatically | `screenshots/03-labels-applied.png` |
-| 4 | Lambda console test run summary (issuesChecked / issuesProcessed / errors) | `screenshots/04-lambda-console.png` |
-| 5 | EventBridge schedule running every 10 minutes | `screenshots/05-eventbridge-schedule.png` |
-| 6 | CloudFormation stack (REPOWATCH) in UPDATE_COMPLETE | `screenshots/06-cloudformation-stack.png` |
+| 1 | New issue before triage (created by NaomiiAP) | `screenshots/issue-before-triage.png` |
+| 2 | After triage: bot comment + labels (just-googleit) | `screenshots/issue-after-triage.png` |
+| 3 | Lambda console test run summary (issuesChecked / issuesProcessed / errors) | `screenshots/lambda.png` |
+| 4 | EventBridge schedule running every 10 minutes | `screenshots/EventBridge.png` |
+| 5 | CloudWatch Logs run summary | `screenshots/CloudWatch-Logs.png` |
+| 6 | Architecture overview | `screenshots/architecture.png` |
 
-**1. New issue created by the repo owner (NaomiiAP)**
+**1. New issue before triage (created by NaomiiAP)**
 
-![New issue created by the repo owner](screenshots/01-issue-created.png)
+![New issue before triage](screenshots/issue-before-triage.png)
 
-**2. REPOWATCH posts an AI triage comment as the bot account (just-googleit)**
+**2. After triage: bot comment + labels (just-googleit)**
 
-![REPOWATCH posts an AI triage comment as the bot account](screenshots/02-auto-triage-comment.png)
+![After triage: bot comment and labels](screenshots/issue-after-triage.png)
 
-**3. Severity and area labels applied automatically**
+**3. Lambda console test run summary (issuesChecked / issuesProcessed / errors)**
 
-![Severity and area labels applied automatically](screenshots/03-labels-applied.png)
+![Lambda console test run summary](screenshots/lambda.png)
 
-**4. Lambda console test run summary (issuesChecked / issuesProcessed / errors)**
+**4. EventBridge schedule running every 10 minutes**
 
-![Lambda console test run summary](screenshots/04-lambda-console.png)
+![EventBridge schedule running every 10 minutes](screenshots/EventBridge.png)
 
-**5. EventBridge schedule running every 10 minutes**
+**5. CloudWatch Logs run summary**
 
-![EventBridge schedule running every 10 minutes](screenshots/05-eventbridge-schedule.png)
+![CloudWatch Logs run summary](screenshots/CloudWatch-Logs.png)
 
-**6. CloudFormation stack (REPOWATCH) in UPDATE_COMPLETE**
+**6. Architecture overview**
 
-![CloudFormation stack in UPDATE_COMPLETE](screenshots/06-cloudformation-stack.png)
+![Architecture overview](screenshots/architecture.png)
 
 ## Required environment variables
 
