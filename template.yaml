@@ -45,7 +45,7 @@ Resources:
                 - bedrock:InvokeModel
               Resource: "*"
       Events:
-        EveryTenMinutes:
+        EveryTenMinutesV2:
           Type: ScheduleV2
           Properties:
             Name: REPOWATCH-every-10-min
@@ -65,4 +65,4 @@ Outputs:
     Value: REPOWATCH-every-10-min
   RepoWatchScheduleArn:
     Description: ARN of the EventBridge Scheduler schedule
-    Value: !GetAtt RepoWatchFunctionEveryTenMinutes.Arn
+    Value: !GetAtt RepoWatchFunctionEveryTenMinutesV2.Arn
