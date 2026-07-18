@@ -1,0 +1,17 @@
+{
+  "name": "repowatch",
+  "version": "1.0.0",
+  "description": "AWS Lambda agent that triages new GitHub issues with Amazon Bedrock.",
+  "type": "module",
+  "main": "index.mjs",
+  "scripts": {
+    "test": "node --test",
+    "package": "npm install --omit=dev && powershell -NoProfile -Command \"Compress-Archive -Path index.mjs,node_modules,package.json -DestinationPath repowatch.zip -Force\""
+  },
+  "engines": {
+    "node": ">=20"
+  },
+  "dependencies": {
+    "@aws-sdk/client-bedrock-runtime": "^3.848.0"
+  }
+}

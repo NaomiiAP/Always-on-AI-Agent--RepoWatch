@@ -1,0 +1,68 @@
+AWSTemplateFormatVersion: "2010-09-09"
+Transform: AWS::Serverless-2016-10-31
+Description: RepoWatch - GitHub Issue Watcher Lambda
+
+Parameters:
+  GitHubToken:
+    Type: String
+    NoEcho: true
+    Description: Fine-grained GitHub personal access token
+  GitHubOwner:
+    Type: String
+    Description: GitHub repository owner or organization
+  GitHubRepo:
+    Type: String
+    Description: GitHub repository name
+  BedrockModelId:
+    Type: String
+    Default: amazon.nova-lite-v1:0
+    Description: Amazon Bedrock model ID for triage
+
+Resources:
+  RepoWatchFunction:
+    Type: AWS::Serverless::Function
+    Properties:
+      FunctionName: REPOWATCH
+      Description: Automatically triages open GitHub issues with Amazon Bedrock
+      CodeUri: .
+      Handler: index.handler
+      Runtime: nodejs24.x
+      Architectures:
+        - x86_64
+      MemorySize: 256
+      Timeout: 120
+      Environment:
+        Variables:
+          GITHUB_TOKEN: !Ref GitHubToken
+          GITHUB_OWNER: !Ref GitHubOwner
+          GITHUB_REPO: !Ref GitHubRepo
+          BEDROCK_MODEL_ID: !Ref BedrockModelId
+      Policies:
+        - AWSLambdaBasicExecutionRole
+        - Statement:
+            - Effect: Allow
+              Action:
+                - bedrock:InvokeModel
+              Resource: "*"
+      Events:
+        EveryTenMinutes:
+          Type: ScheduleV2
+          Properties:
+            Name: REPOWATCH-every-10-min
+            Description: Invoke RepoWatch every 10 minutes
+            ScheduleExpression: rate(10 minutes)
+            State: ENABLED
+
+Outputs:
+  RepoWatchFunctionName:
+    Description: Name of the RepoWatch Lambda function
+    Value: !Ref RepoWatchFunction
+  RepoWatchFunctionArn:
+    Description: ARN of the RepoWatch Lambda function
+    Value: !GetAtt RepoWatchFunction.Arn
+  RepoWatchScheduleName:
+    Description: Name of the EventBridge Scheduler schedule
+    Value: REPOWATCH-every-10-min
+  RepoWatchScheduleArn:
+    Description: ARN of the EventBridge Scheduler schedule
+    Value: !GetAtt RepoWatchFunctionEveryTenMinutes.Arn
