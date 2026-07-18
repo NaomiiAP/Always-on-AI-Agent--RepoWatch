@@ -5,6 +5,45 @@ Amazon Bedrock Nova to triage each new issue, posts the decision, and adds
 labels. An existing auto-triage comment is the only state and deduplication
 mechanism.
 
+## Demo screenshots
+
+The screenshots below walk through a full run: a new issue is opened, REPOWATCH
+triages it with Amazon Bedrock Nova, posts a comment, and applies labels — all
+on a 10-minute EventBridge schedule.
+
+| # | What it shows | File |
+| - | ------------- | ---- |
+| 1 | New issue created by the repo owner (NaomiiAP) | `screenshots/01-issue-created.png` |
+| 2 | REPOWATCH posts an AI triage comment as the bot account (just-googleit) | `screenshots/02-auto-triage-comment.png` |
+| 3 | Severity and area labels applied automatically | `screenshots/03-labels-applied.png` |
+| 4 | Lambda console test run summary (issuesChecked / issuesProcessed / errors) | `screenshots/04-lambda-console.png` |
+| 5 | EventBridge schedule running every 10 minutes | `screenshots/05-eventbridge-schedule.png` |
+| 6 | CloudFormation stack (REPOWATCH) in UPDATE_COMPLETE | `screenshots/06-cloudformation-stack.png` |
+
+**1. New issue created by the repo owner (NaomiiAP)**
+
+![New issue created by the repo owner](screenshots/01-issue-created.png)
+
+**2. REPOWATCH posts an AI triage comment as the bot account (just-googleit)**
+
+![REPOWATCH posts an AI triage comment as the bot account](screenshots/02-auto-triage-comment.png)
+
+**3. Severity and area labels applied automatically**
+
+![Severity and area labels applied automatically](screenshots/03-labels-applied.png)
+
+**4. Lambda console test run summary (issuesChecked / issuesProcessed / errors)**
+
+![Lambda console test run summary](screenshots/04-lambda-console.png)
+
+**5. EventBridge schedule running every 10 minutes**
+
+![EventBridge schedule running every 10 minutes](screenshots/05-eventbridge-schedule.png)
+
+**6. CloudFormation stack (REPOWATCH) in UPDATE_COMPLETE**
+
+![CloudFormation stack in UPDATE_COMPLETE](screenshots/06-cloudformation-stack.png)
+
 ## Required environment variables
 
 - `GITHUB_TOKEN` — fine-grained GitHub personal access token
@@ -88,3 +127,7 @@ The schedule is intentionally not included because it is configured manually.
 ```powershell
 npm test
 ```
+
+---
+
+_Built for the **AWS Builder Center Always-On Agent Weekend Challenge**._
